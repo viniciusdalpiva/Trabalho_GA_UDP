@@ -1,11 +1,8 @@
 import os
-
-# importing modules for the chat app
 import socket
 import time
 import threading
 import sys
-
 import subprocess
 
 inp = input("\n1 > PC e Note: \n2 > DOCKER: ")
@@ -68,14 +65,11 @@ def envia():
 
             
 
-ip_sender = input("\nDigite seu IP  ")#"192.168.0.107" #IP PC WINDOWS
+ip_sender = input("\nDigite seu IP  ")            #"192.168.0.107" #IP PC WINDOWS
 port_sender = int(input("\nDigite a sua porta: "))#9001          #PORTA PC WINDOWS
 name = ip_sender
-print("Aguardando conexão de outro dispositivo...")
-time.sleep(1)
-print("Conectado")
 
-# Multi-threading
+
 send = threading.Thread(target=envia)
 receive = threading.Thread(target=recebe)
 send.start()
