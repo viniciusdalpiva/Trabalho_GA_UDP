@@ -6,7 +6,7 @@ import sys
 
 import subprocess
 
-inp = input("\n1 > PC e Note: \n2 > DOCKER: ")
+inp = input("\n1 > PC e Note: \n2 > DOCKER:\n")
 
 if(inp) == "1":
                 #PC                  note windows         linux terminal docker vm 
@@ -36,9 +36,12 @@ def recebe():
             #envia a str como comando no cmd
             os.system(mensagemSplit[1])
             auxmsgsplit = mensagemSplit[1]
+            time.sleep(0.2)
             z = os.popen(auxmsgsplit).read()
+            if(z == ''):
+                z = 'Comando não reconhecido'
             
-            x = "\nRetorno de "+ip_sender+"\n"+z #"RETORNO OUTPUT DO COMANDO"
+            x = "\n==============================\nRetorno de "+ip_sender+"\n==============================\n"+z+"\n==============================" #"RETORNO OUTPUT DO COMANDO"
             
             for i in clients:
                 if(i[0] == END_cliente[0]):
