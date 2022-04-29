@@ -6,7 +6,7 @@ import sys
 
 import subprocess
 
-inp = input("\n1 > PC e Note: \n2 > DOCKER:\n")
+inp = input("\n1 > WINDOWS: \n2 > LINUX:\n")
 
 if(inp) == "1":
                 #PC                  note windows         linux terminal docker vm 
@@ -39,9 +39,9 @@ def recebe():
             time.sleep(0.2)
             z = os.popen(auxmsgsplit).read()
             if(z == ''):
-                z = 'Comando não reconhecido'
+                z = 'O comando enviado não reconhecido.'
             
-            x = "\n==============================\nRetorno de "+ip_sender+"\n==============================\n"+z+"\n==============================" #"RETORNO OUTPUT DO COMANDO"
+            x = "\n\n==============================\nRetorno de "+ip_sender+"\n==============================\n"+z+"\n==============================" #"RETORNO OUTPUT DO COMANDO"
             
             for i in clients:
                 if(i[0] == END_cliente[0]):
@@ -68,15 +68,13 @@ def envia():
 
 
             
-
+#ip e porta
 ip_sender = input("\nDigite seu IP  ")            #"192.168.0.107" #IP PC WINDOWS
 port_sender = int(input("\nDigite a sua porta: "))#9001          #PORTA PC WINDOWS
 name = ip_sender
-print("Aguardando conexão de outro dispositivo...")
-time.sleep(1)
-print("Conectado")
 
-# Multi-threading
+
+#threads
 send = threading.Thread(target=envia)
 receive = threading.Thread(target=recebe)
 send.start()
